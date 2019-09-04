@@ -1,0 +1,39 @@
+<div id="flex-container">
+    <div class="selection-container">
+        <div class="selection">
+            <label>
+                <h3>Value Type</h3>
+            </label>
+            <ng-select [items]="inputTypes" [(ngModel)]="selectedInputType"></ng-select>
+        </div>
+        <div class="selection">
+            <label>
+                <h3>Sort Type</h3>
+            </label>
+            <ng-select [items]="sortTypes" [(ngModel)]="selectedSortType"></ng-select>
+        </div>
+    </div>
+
+    <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="Input" [(ngModel)]="inputString">
+    </mat-form-field>
+
+    <button class="full-width-button" mat-raised-button color="primary" (click)="submit()">Sort</button>
+    <mat-progress-bar color="warn" mode="determinate" [value]="stepAnimationProgress"></mat-progress-bar>
+
+    <span class="error-message" *ngIf="error">{{error}}</span>
+
+    <div id="prograss-container" *ngIf="result">
+        <div class="step-container" *ngFor="let step of currentStep">
+            <ng-container *ngIf="step['percent'] < 80; else elseTemplate">
+                    <p [ngStyle]="{'left': step['percent'] + '%'}" class="overlay">{{step['value']}}</p>
+            </ng-container>
+            <ng-template #elseTemplate>
+                    <p style="left: 47%" class="overlay">{{step['value']}}</p>
+            </ng-template>
+            
+            <mat-progress-bar style="height: 25px;" mode="determinate" [value]="step['percent']"></mat-progress-bar>
+        </div>
+        
+    </div>
+</div>

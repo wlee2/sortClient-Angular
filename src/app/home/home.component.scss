@@ -1,0 +1,49 @@
+#flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .selection-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        .selection {
+            width: 45%;
+        }
+    }
+    .full-width {
+        width: 100%;
+        padding-top: 10px;
+    }
+    .full-width-button {
+        width: 100%;
+    }
+
+    .error-message {
+        color: red;
+    }
+
+    #prograss-container {
+        width: 100%;
+        .step-container {
+            margin: 10px 0 10px 0;
+            position: relative;
+            .overlay {
+                position: absolute;
+                color: white;
+                padding: 0;
+                margin: 0;
+                margin-left: 5px;
+                z-index: 3;
+                top: 0;
+                // left: 10px;
+            }
+        }
+    }
+
+    label {
+        h3 {
+            margin-bottom: 4px;
+        }
+    }
+}
